@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import CarouselList from '../../components/CarouselList';
 import MovieDetail from '../../components/MovieDetail';
 import { MovieDetailProps } from '../../props/props';
 import { api } from '../../services/api';
@@ -18,7 +17,7 @@ const Movie: React.FC = () => {
 
   useEffect(()=>{
     const params = {
-      api_key: 'd7b6616aa42247072f7b6eed783033f0',
+      api_key: process.env.REACT_APP_MOVIE_DB_API_KEY,
       language: 'pt-BR'
     }
 
@@ -30,7 +29,7 @@ const Movie: React.FC = () => {
     .catch(error => {
       console.log(error);
     });
-  }, []);
+  }, [type, id]);
 
   return (
     <Container>

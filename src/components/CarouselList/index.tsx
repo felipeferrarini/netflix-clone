@@ -10,11 +10,19 @@ interface Props {
 }
 
 function Card(movie: MovieDetailProps) {
-  const handleDragStart = (e: React.DragEvent<HTMLImageElement>) => e.preventDefault();
+  const handleDragStart = (e: React.DragEvent<HTMLAnchorElement>) => e.preventDefault();
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => e.preventDefault();
 
   return(
-    <CardContainer className={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} onDragStart={handleDragStart}>
-      <h4>{movie.title}</h4>
+    <CardContainer 
+      className={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} 
+      onDragStart={handleDragStart}
+      to={`/${movie.media_type}/${movie.id}`}
+      onClickCapture={handleClick}
+    >
+      <div className="info">
+        <h4>{movie.title}</h4>
+      </div>
     </CardContainer>
   );
 }

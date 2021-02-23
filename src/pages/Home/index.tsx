@@ -11,7 +11,7 @@ const Home: React.FC = () => {
 
   useEffect(()=>{
     const params = {
-      api_key: 'd7b6616aa42247072f7b6eed783033f0',
+      api_key: process.env.REACT_APP_MOVIE_DB_API_KEY,
       language: 'pt-BR',
       sort_by: 'release_date.desc'
     }
