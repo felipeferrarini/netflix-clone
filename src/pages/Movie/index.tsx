@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import CarouselList from '../../components/CarouselList';
 import MovieDetail from '../../components/MovieDetail';
 import { MovieDetailProps } from '../../props/props';
 import { api } from '../../services/api';
@@ -34,6 +35,7 @@ const Movie: React.FC = () => {
   return (
     <Container>
       <MovieDetail movie={ media} type={type}/>
+      <CarouselList type="Recomendados" id={Number(id)}/>
     </Container>
   );
 }

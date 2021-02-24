@@ -8,6 +8,7 @@ import { GlobalStyle } from "./styles/globalstyle";
 import Movie from "./pages/Movie";
 import Home from "./pages/Home";
 import 'react-alice-carousel/lib/alice-carousel.css';
+import Pesquisa from "./pages/Pesquisa";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
       <Switch>
           <Route path="/:type/:id">
             <Movie />
+          </Route>
+          <Route path="/search">
+            <Pesquisa />
           </Route>
           <Route path="/">
             <Home />

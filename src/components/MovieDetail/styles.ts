@@ -3,12 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.div`
   background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.8)100%),  url(${props => props.className});
   background-size: cover;
-  background-position: center;
-
+  background-position: center top;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  padding-bottom: 35px;
 
   .container {
     margin-left: 2rem;
@@ -27,6 +27,10 @@ export const Container = styled.div`
   .description {
     margin-top: 10px;
     margin-bottom:2.5rem;
+
+    @media(min-width: 1000px){
+      width: 70%;
+    }
   }
 
   .botoes {

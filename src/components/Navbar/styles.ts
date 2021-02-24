@@ -7,6 +7,7 @@ export const Container = styled.header`
   justify-content: space-between;
   margin-left: 2rem;
   margin-right: 2rem;
+  height: 4.2rem;
 
   @media(max-width: 768px){
     flex-direction: column;
@@ -32,4 +33,34 @@ export const Container = styled.header`
       color: var(--white);
     }
    }
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width:50%;
+  height: 60%;
+
+  svg {
+    transform: translateX(150%);
+    color: var(--white);
+  }
+
+  input {
+    height: 100%;
+    width:100%;
+    padding-left: 2rem;
+    border: 1px solid var(--link);
+    background-color: transparent;
+    outline: none;
+    color: var(--white);
+    transition: all 0.2s;
+    border-radius: 4px;
+
+    :active, :hover {
+      border-color: var(--white);
+    }
+  }
 `;

@@ -1,13 +1,21 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const CardContainer = styled(Link)`
+export const Container = styled.div`
+  h3 {
+    margin-left: 2rem;
+    margin-top:10px;
+    font-size: 1.2rem;
+  }
+`;
+
+export const CardContainer = styled.div`
   height: 28rem;
   width: 97%;
   background: url(${props => props.className});
   background-size: cover;
   background-position: center;
-  margin: 25px auto;
+  margin: 10px auto;
   cursor: pointer;
   transition: all 0.2s;
   border: 1px solid var(--background);
