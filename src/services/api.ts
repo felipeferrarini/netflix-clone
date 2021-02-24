@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ListProps } from '../props/props';
+import { ListProps, ResultVideo } from '../props/props';
 
 export const api = axios.create({
   baseURL: 'https://api.themoviedb.org'
@@ -78,6 +78,25 @@ export function getSearch(query: string | null, page: string | null){
   }
 
   const data: Promise<ListProps> = api.get(`/3/search/movie`, {params})
+  .then((response)=>{
+    return response.data;
+  })
+  .catch(error => {
+    console.log(error);
+    return {};
+  });
+
+  return data;
+}
+
+export function getVideo(id: number | null | undefined, type: string | null | undefined){
+
+  const params = {
+    api_key: process.env.REACT_APP_MOVIE_DB_API_KEY,
+    language: 'pt-BR'
+  }
+
+  const data: Promise<ResultVideo> = api.get(`/3/${type}/${id}/videos`, {params})
   .then((response)=>{
     return response.data;
   })

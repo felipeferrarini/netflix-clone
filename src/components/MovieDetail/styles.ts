@@ -22,6 +22,10 @@ export const Container = styled.div`
   .title {
     font-size: 4.5rem;
     margin-top: 15%;
+
+    @media(max-width: 768px) {
+      font-size: 3rem;
+    }
   }
 
   .description {
@@ -40,6 +44,21 @@ export const Container = styled.div`
 
     @media(max-width: 525px) {
       flex-direction: column;
+    }
+  }
+
+  .info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    @media(max-width: 525px) {
+      flex-direction: column;
+    }
+
+    button {
+      margin-left: 0;
     }
   }
 `;

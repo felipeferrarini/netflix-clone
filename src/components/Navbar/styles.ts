@@ -7,7 +7,6 @@ export const Container = styled.header`
   justify-content: space-between;
   margin-left: 2rem;
   margin-right: 2rem;
-  height: 4.2rem;
 
   @media(max-width: 768px){
     flex-direction: column;
@@ -43,13 +42,22 @@ export const Form = styled.form`
   width:50%;
   height: 60%;
 
+  @media(max-width: 768px){
+    width: 100%;
+  }
+
   svg {
     transform: translateX(150%);
     color: var(--white);
+
+    
+    @media(max-width: 768px){
+      margin-bottom: 10px;
+    }
   }
 
   input {
-    height: 100%;
+    height: 2.8rem;
     width:100%;
     padding-left: 2rem;
     border: 1px solid var(--link);
@@ -58,6 +66,10 @@ export const Form = styled.form`
     color: var(--white);
     transition: all 0.2s;
     border-radius: 4px;
+
+    @media(max-width: 768px){
+      margin-bottom: 10px;
+    }
 
     :active, :hover {
       border-color: var(--white);

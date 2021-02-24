@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { MovieDetailProps } from '../../props/props';
 import { Button } from '../Button';
 import { Container } from './styles';
-import { FaPlayCircle, FaInfo} from 'react-icons/fa'
-import {useHistory, useLocation} from 'react-router-dom'
+import { FaPlayCircle, FaInfo, FaCheck} from 'react-icons/fa'
+import {Link, useHistory, useLocation} from 'react-router-dom'
+import { getVideo } from '../../services/api';
 
 interface Props {
   movie?: MovieDetailProps;
@@ -11,9 +12,15 @@ interface Props {
 }
 
 function MovieDetail({ movie, type }: Props) {
-
+  const [video, setVideo] = useState('');
   const router = useHistory();
   const location = useLocation();
+
+  useEffect(() =>{
+    getVideo(movie?.id || 1, type || 'movie').then(res=>{
+      setVideo(res.results?.find(result=> result?.type === "Trailer")?.key || '');
+    })
+  },[movie, type])
 
   return (
     <Container 
@@ -25,9 +32,18 @@ function MovieDetail({ movie, type }: Props) {
 
         {location.pathname === '/' ? (
           <div className="botoes">
-            <Button className="active" type="button">
+            <Button 
+              className="active" 
+              type="button"
+            >
               <FaPlayCircle/>
-              Assistir
+              <a 
+                href={`https://www.youtube.com/watch?v=${video}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Assistir
+              </a>
             </Button>
 
             <Button type="button" onClick={()=>router.push(`/${type === undefined ? 'movie' : type}/${movie?.id}`)}>
@@ -37,12 +53,29 @@ function MovieDetail({ movie, type }: Props) {
           </div>
         ) : (
           <div className="info">
-            <p>
-              {`Relevancia ${(movie?.vote_average || 10) * 10}%`}
-            </p>
-            <p>
-              {`Data de Lançamento: ${movie?.release_date}`}
-            </p>
+            <Button className="active" type="button">
+              <FaPlayCircle/>
+              <a 
+                href={`https://www.youtube.com/watch?v=${video}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Assistir
+              </a>
+            </Button>
+            <Button type="button" onClick={()=>router.push(`/${type === undefined ? 'movie' : type}/${movie?.id}`)}>
+              <FaCheck/>
+              Já assisti
+            </Button>
+            <div>
+              <p>
+                {`Relevancia ${(movie?.vote_average || 10) * 10}%`}
+              </p>
+              <p>
+                {`Data de Lançamento: ${movie?.release_date}`}
+              </p>
+            </div>
+            
           </div>
         )}
 
