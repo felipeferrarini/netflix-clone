@@ -1,28 +1,32 @@
 import React, { useEffect, useState } from 'react';
-import AliceCarousel, { EventObject } from 'react-alice-carousel';
+import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import { FaInfo } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 import { ListProps, MovieDetailProps } from '../../props/props';
 import { getDiscover, getList, getRecomender } from '../../services/api';
+import { Button } from '../Button';
 import { CardContainer, Container } from './styles';
 
 function Card(movie: MovieDetailProps) {
   const router = useHistory();
 
-  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => e.preventDefault();
-  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>{
-    if(!e.isDefaultPrevented()) {
-      // router.push(`/${movie.media_type === undefined ? 'movie' : movie.media_type}/${movie.id}`);
-    }
+  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
   }
 
   return(
     <CardContainer 
       className={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
-      onDragStart={handleDragStart}
-      onDragExit={handleDragStart}
-      onClick={handleClick}
-    />
+      onDrag={handleDragStart}
+    >
+      <Button 
+        type="button" 
+        onClick={()=>router.push(`/${movie.media_type === undefined ? 'movie' : movie.media_type}/${movie?.id}`)}
+      >
+        <FaInfo/>
+      </Button>
+    </CardContainer>
   );
 }
 
@@ -37,6 +41,7 @@ interface Props {
 function CarouselList({id, type, result, infinite} :Props) {
 
   const [media, setMedia] = useState<ListProps>();
+  const [isChanging, setIsChanging] = useState(false);
 
   useEffect(()=>{
     switch (type){
@@ -73,14 +78,9 @@ function CarouselList({id, type, result, infinite} :Props) {
 
   const items = media?.results.map(movie => <Card {...movie}/>)
 
-  const handleChange = (e: EventObject)=>{
-    if(e.isNextSlideDisabled){
-      items?.push(<div style={{background: '#ff2', height: '100px', width: '100px'}} />)
-    }
-  }
-
   return (
     <Container>
+      <span>{String(isChanging)}</span>
       <h3>{type === 'list' ? media?.name : type === 'search' ? '' : type}</h3>
       <AliceCarousel 
         mouseTracking items={items} 
@@ -89,8 +89,6 @@ function CarouselList({id, type, result, infinite} :Props) {
         autoHeight={true}
         disableButtonsControls
         disableDotsControls
-        onSlideChange={handleChange}
-        onSlideChanged={handleChange}
       />
     </Container>
   );

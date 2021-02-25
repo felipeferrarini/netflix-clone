@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -24,6 +23,7 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: flex-end;
 
   @media(max-width: 1440px) {
     height: 25rem;
@@ -61,5 +61,16 @@ export const CardContainer = styled.div`
 
   h4 {
     margin: 10px;
+  }
+
+  button{
+    width: fit-content;
+    background-color: var(--gray);
+    padding: 15px 15px;
+
+    svg {
+      margin:0;
+      font-size: 15px;
+    }
   }
 `;

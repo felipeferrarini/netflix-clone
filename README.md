@@ -1,46 +1,53 @@
-# Getting Started with Create React App
+# Info :information_source:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projeto criado durante o bootcamp "Avanade Angular Developer" na [Digital Innovation One.][https://digitalinnovation.one/]
 
-## Available Scripts
+## Projeto Proposto :page_facing_up:
 
-In the project directory, you can run:
+Recrie a interface do principal site de streaming mundial utilizando tecnologias simples como HTML5, CSS3 e JavaScript. Nesse projeto você aprenderá: como estruturar um layout, técnicas de CSS3 com containers e variáveis, como posicionar os elementos com Flexbox e como utilizar plugins Jquery a favor da sua aplicação.
+
+
+
+## Solução criada :man_technologist:
+
+O projeto foi realizado utilizando o [ReactJs][https://pt-br.reactjs.org/], uma biblioteca JavaScript para criar interfaces de usuário de forma mais produtiva.
+
+No projeto também foi utilizado Typescript, [styled components][https://styled-components.com/], [react-icons][https://react-icons.github.io/react-icons/] e a biblioteca [react-alice-carousel][https://www.npmjs.com/package/react-alice-carousel] para o carousel de filmes.
+
+
+
+## Vercel App :earth_americas:
+
+O deploy do projeto foi feito na [Vercel][https://vercel.com] e pode ser acessado pelo [link][https://netflix-clone-gray.vercel.app].
+
+
+
+## The Movie DB API :computer:
+
+Para criar uma experiência mais próxima do site real, foi utilizado uma API do site [The Movie DB API][https://www.themoviedb.org/]. Caso queira clonar este projeto, para utilizar a API basta criar uma conta no site e seguir o passo a passo neste [link][https://www.themoviedb.org/documentation/api] e , após conseguir sua API KEY (v3 auth), criar um arquivo chamado `.env.local` no diretorio principal do projeto, com a seguinte estrutura:
+
+`REACT_APP_MOVIE_DB_API_KEY=****cole sua API KEY aqui****`
+
+
+
+## Comandos disponíveis (rode na raiz do projeto) :scroll:
+
+### `yarn`
+
+Instala todas as dependências necessarias para rodar a aplicação.
 
 ### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Inicia a aplicação no modo de desenvolvimento.<br />
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Abra [http://localhost:3000](http://localhost:3000) para ver no seu browser.
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+A página vai recarregar automaticamente a cada alteração feita.<br />
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Cria a versão de produção da sua aplicação.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Veja mais informações no [link][https://facebook.github.io/create-react-app/docs/deployment]
